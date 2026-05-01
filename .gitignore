@@ -1,0 +1,45 @@
+# Secrets & local config
+/.env
+/.env.backup
+/.phpunit.result.cache
+
+# Dependencies & build
+/vendor/
+/node_modules/
+/public/build/
+/public/hot
+/public/storage
+
+# Laravel runtime
+/bootstrap/cache/*.php
+/storage/app/public/*
+/storage/app/feishu_cli/
+/storage/app/user_data/
+/storage/framework/cache/
+/storage/framework/sessions/
+/storage/framework/testing/
+/storage/framework/views/
+/storage/logs/*.log
+/storage/logs/*
+
+# Lark CLI runtime state (per-user caches, not project artifacts)
+/.lark-cli/
+/.local/
+
+# Project-local backups & artifacts
+/.codex_backups/
+/tmp/
+/PHPmifrog_LpftD.tar.gz
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Backup snapshots created before in-place edits (bak.<label>.<timestamp>)
+*.bak.*
+
+# Runtime backups (created before in-place edits) and uploads
+/storage/backups/
+/public/uploads/
