@@ -1,185 +1,207 @@
-#### 全链路配置Step-by-step：https://vcno26d3qz3w.feishu.cn/docx/OSiGdCa1tooKd9x19COcVOa5nld
+<p align="center">
+  <img src="docs/images/banner.svg" alt="Mifrog · 米蛙" width="100%">
+</p>
 
-- Demo体验地址：https://vcno26d3qz3w.feishu.cn/docx/OSiGdCa1tooKd9x19COcVOa5nld
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/Voellin/mifrog.chat?color=blue&style=flat-square" alt="License"></a>
+  <img src="https://img.shields.io/badge/PHP-8.2+-777BB4.svg?logo=php&logoColor=white&style=flat-square" alt="PHP">
+  <img src="https://img.shields.io/badge/Laravel-12.x-FF2D20.svg?logo=laravel&logoColor=white&style=flat-square" alt="Laravel">
+  <img src="https://img.shields.io/badge/MySQL-5.7+-4479A1.svg?logo=mysql&logoColor=white&style=flat-square" alt="MySQL">
+  <img src="https://img.shields.io/badge/Redis-6+-DC382D.svg?logo=redis&logoColor=white&style=flat-square" alt="Redis">
+  <a href="https://mifrog.chat/demo"><img src="https://img.shields.io/badge/Demo-在线体验-50fa7b.svg?style=flat-square" alt="Demo"></a>
+  <a href="https://github.com/Voellin/mifrog.chat/stargazers"><img src="https://img.shields.io/github/stars/Voellin/mifrog.chat?style=flat-square&color=fa8c16" alt="Stars"></a>
+</p>
 
-- 用户名：admin
+<p align="center">
+  <a href="https://mifrog.chat">🌐 官网</a> ·
+  <a href="https://mifrog.chat/demo">🎯 在线 Demo</a> ·
+  <a href="#-30-分钟自部署">🚀 自部署</a> ·
+  <a href="#-架构概览">🏗 架构</a> ·
+  <a href="#-faq">❓ FAQ</a>
+</p>
 
-- 密码：123456
+---
 
-### 中文版
+## ✨ Mifrog 是什么
 
-#### 前置环境
+**Mifrog（米蛙）** 是一套企业级 **AI 执行助手平台**，深度接入飞书。它把 **日程、文档、表格、审批、长期记忆** 真正纳入同一条执行链路 —— 不只是「能聊天」，而是能 **执行**、能 **记住**、能 **回想**、能 **治理**。
 
-在运行 `install.sh` 之前，宿主机需先具备以下基础设施（脚本本身**不**安装系统组件，避免与已有面板/CI 冲突）：
+完全开源（MIT）、自托管、不向任何第三方上报数据，**30 分钟即可部署到自己的服务器**。
 
-| 组件 | 版本 | 用途 |
+<p align="center">
+  <img src="docs/images/dashboard.png" alt="Mifrog 管理后台 · 仪表盘" width="100%">
+</p>
+
+---
+
+## 🎯 六大核心能力
+
+| | 能力 | 说明 |
 |---|---|---|
-| Linux x86-64 | 任意主流发行版（Ubuntu 22.04 / CentOS 7+ 已测试） | 操作系统 |
-| PHP | **8.2 或更高** | Laravel 12 运行时 |
-| PHP 扩展 | `pdo_mysql`, `redis`, `mbstring`, `bcmath`, `curl`, `gd`, `zip`, `openssl`, `xml`, `json`, `fileinfo`, `tokenizer` | Laravel + Mifrog 业务 |
+| 🗓 | **智能日程管理** | 一句自然语言即可创建飞书日程、补充参会人，并承接上下文继续推进 |
+| 📄 | **文档与表格执行** | 文档创建、表格写入、Base 操作与读取总结，闭环直接发生在飞书内 |
+| 🛡 | **数据完全自托管** | 所有用户对话/记忆/附件/审计日志都在你自己的服务器，**绝不向任何第三方上报** |
+| 🧠 | **长期记忆系统** | L1 会话 / L2 事项 / L3 长期事实，三层记忆让机器人记住你 |
+| 🔄 | **主动归档与提醒** | 每 2 小时自动归档飞书活动到知识库，能回想 90 天内的对话与文档 |
+| ⚙️ | **企业治理** | 敏感词审计、配额池、操作日志、多管理员权限 —— 满足企业合规需求 |
+
+---
+
+## 🌐 在线体验（30 秒）
+
+不想自己部署？直接打开演示站：
+
+```
+🔗  https://mifrog.chat/demo
+👤  账号: admin
+🔑  密码: 123456
+```
+
+完整管理后台、所有页面可点击。**所有 demo 数据每天 0 点重置**，可以放心试错。
+
+---
+
+## 📸 产品预览
+
+### 用户管理 · 飞书组织架构同步
+<p align="center"><img src="docs/images/users.png" alt="用户管理" width="100%"></p>
+
+> 一键从飞书同步组织架构 + 成员；按部门 / 关键词筛选；支持启停账号；显示同步状态、新增 / 更新 / 停用统计。
+
+### 审计中心 · 敏感词策略与命中明细
+<p align="center"><img src="docs/images/audits.png" alt="审计中心" width="100%"></p>
+
+> 多策略管理（全局 / 部门级）；输入 / 回复双向审计；命中后可放行 / 自动打码 / 拦截；7 天报告导出；策略健康度评分。
+
+### 系统配置 · 多渠道接入
+<p align="center"><img src="docs/images/settings-channel.png" alt="渠道配置" width="100%"></p>
+
+> 飞书 Webhook 事件订阅 + 加密回调验签；钉钉接入开发中。
+
+### 系统配置 · 多模型供应商
+<p align="center"><img src="docs/images/settings-model.png" alt="模型配置" width="100%"></p>
+
+> 原生支持 OpenAI 兼容协议的所有模型供应商：豆包 / 智谱 / DeepSeek / Anthropic / 通义 / Kimi / Ollama / vLLM 等；支持文本 + 视觉模型分别配置；可单独测试连接 / 设主备。
+
+---
+
+## 🏗 架构概览
+
+<p align="center">
+  <img src="docs/images/architecture.svg" alt="Mifrog Architecture" width="100%">
+</p>
+
+**核心模块（4 个）**：
+- **ROUTING** —— 飞书 Webhook 接入 + 用户意图分发（`/webhooks/feishu/events`）
+- **EXECUTION** —— Tool-calling Agent + Run + 状态机（基于 `queue:work`）
+- **MEMORY** —— L1 / L2 / L3 三层记忆（关键词 + 文件 + DB 混合）
+- **AUDIT + QUOTA** —— 敏感词审计 / 配额池 / 操作日志
+
+**外部依赖**：LLM API（OpenAI 兼容）· lark-cli 二进制（飞书官方 CLI，用户级 OAuth）· Feishu Open API · MySQL · Redis · Supervisor。
+
+---
+
+## 🚀 30 分钟自部署
+
+### 前置环境
+
+| 组件 | 版本 | 说明 |
+|---|---|---|
+| Linux x86-64 | Ubuntu 22.04+ / CentOS 7+ | 已测试 |
+| PHP | **8.2+** | + 扩展 `pdo_mysql, redis, mbstring, bcmath, curl, gd, zip, openssl, xml` |
 | Composer | 2.x | PHP 包管理器 |
 | MySQL | 5.7+ 或 8.0 | 主数据库 |
 | Redis | 6+ | 缓存（可选）/ session |
 | Nginx | 任意稳定版 | Web 服务器 |
 | Supervisor | 任意稳定版 | 队列 worker 守护 |
 
-如缺扩展，参考：
+### 部署步骤
 
 ```bash
-# Ubuntu / Debian
-sudo apt install -y php8.2-mysql php8.2-redis php8.2-mbstring php8.2-bcmath \
-                    php8.2-curl php8.2-gd php8.2-zip php8.2-xml
-
-# CentOS / Rocky
-sudo yum install -y php-mysqlnd php-redis php-mbstring php-bcmath \
-                    php-curl php-gd php-zip php-xml
-```
-
-#### 部署步骤
-
-```bash
-# 1. 克隆仓库到任一稳定路径（推荐 /var/www/mifrog 或 /opt/mifrog）
+# 1. clone 仓库
 sudo mkdir -p /var/www && cd /var/www
 sudo git clone https://github.com/Voellin/mifrog.chat.git mifrog
 cd mifrog
 
-# 2. 运行一键安装脚本
+# 2. 跑一键安装脚本（交互式问 6 个字段：域名/MySQL/Redis）
 sudo bash install.sh
+
+# 3. 按脚本提示复制 nginx / supervisor / cron 配置
+sudo cp install_artifacts/output/nginx-mifrog.conf /etc/nginx/conf.d/
+sudo cp install_artifacts/output/supervisor-mifrog.ini /etc/supervisor/conf.d/
+sudo nginx -s reload
+sudo supervisorctl reread && sudo supervisorctl update
+sudo crontab -e   # 把 mifrog-crontab.txt 内容贴进去
+
+# 4. 浏览器走 Web 向导
+# https://yourdomain.com/setup → 填飞书 App / 模型 API / 管理员账号 → 完成
 ```
 
-脚本会交互式询问：
+> 详细参数说明、飞书开放平台配置、SSL 证书申请等见 [完整部署文档](docs/DEPLOY.md)（开发中）
 
-- 应用域名（含协议，例 `https://mifrog.example.com`）
-- Web 进程用户（默认 `www-data`）
-- MySQL 主机/端口/root 凭据（用于建库 + 应用账号）
-- 应用 DB 名/用户/密码（密码留空将自动生成）
-- Redis 主机/端口
-
-完成后会做这些事：
-
-1. 检查 PHP 版本、扩展、Composer/MySQL/Redis 客户端是否齐全
-2. 把仓库内 `bin/lark-cli` 复制到 `/usr/local/bin/lark-cli`
-3. 自动创建 MySQL 数据库 + 应用账号
-4. 写入 `.env`（含合理默认值）
-5. `composer install --no-dev --optimize-autoloader`
-6. `php artisan key:generate`、`storage:link`
-7. 生成 Nginx / Supervisor / crontab 三个模板到 `install_artifacts/output/`
-8. 设置文件权限
-
-#### 完成基础设施配置
-
-按脚本最后输出的提示：
+### 升级与维护
 
 ```bash
-# Nginx
-sudo cp install_artifacts/output/nginx-mifrog.conf /etc/nginx/conf.d/
-sudo nginx -t && sudo nginx -s reload     # 编辑文件填 SSL 证书路径
-
-# Supervisor
-sudo cp install_artifacts/output/supervisor-mifrog.ini /etc/supervisor/conf.d/   # Ubuntu/Debian
-# 或 /etc/supervisord.d/   # CentOS
-sudo supervisorctl reread && sudo supervisorctl update
-
-# Crontab
-sudo crontab -e
-# 把 install_artifacts/output/mifrog-crontab.txt 内容粘贴进去
+git pull
+composer install --no-dev --optimize-autoloader
+php artisan migrate --force
+sudo supervisorctl restart mifrog:*
 ```
-
-#### 完成 Web 安装向导
-
-打开浏览器访问 `https://yourdomain.com/setup`，填写：
-
-- 飞书自建应用：App ID / App Secret / Encrypt Key / Verification Token
-- 模型 API：Base URL（默认 `https://api.openai.com/v1`）/ API Key / 模型名（如 `gpt-4o-mini`）
-- 管理员账号：用户名 / 显示名 / 密码（不少于 8 位）
-- 默认月度 Token 配额（0 = 不限制）
-
-提交后系统会跑 migration、写入 setting、创建 admin 用户、生成 `storage/app/setup.lock`，最后跳转到 `/admin/login`。
-
-#### 升级与维护
-
-- 升级 Mifrog：`git pull && composer install --no-dev && php artisan migrate --force && supervisorctl restart mifrog:*`
-- 升级 lark-cli：替换 `bin/lark-cli` → `cp bin/lark-cli /usr/local/bin/lark-cli`
-- 重新进入安装向导：删除 `storage/app/setup.lock` 后访问 `/setup`
 
 ---
 
-### English version
+## ❓ FAQ
 
-#### Prerequisites
+<details>
+<summary><strong>Mifrog 跟飞书自带的机器人有什么区别？</strong></summary>
 
-Before running `install.sh`, the host must have:
+飞书自带的机器人本质是消息转发与简单 prompt。Mifrog 是完整的执行引擎：能识别用户意图、调用飞书各类 API（日程 / 文档 / 表格 / 审批 / 邮件 / 任务）、维护多层长期记忆、记录全链路审计，并支持企业级配额与权限。
+</details>
 
-| Component | Version | Purpose |
-|---|---|---|
-| Linux x86-64 | Ubuntu 22.04 / CentOS 7+ tested | OS |
-| PHP | **8.2+** | Laravel 12 runtime |
-| PHP extensions | `pdo_mysql`, `redis`, `mbstring`, `bcmath`, `curl`, `gd`, `zip`, `openssl`, `xml`, `json`, `fileinfo`, `tokenizer` | Laravel + Mifrog |
-| Composer | 2.x | PHP package manager |
-| MySQL | 5.7+ or 8.0 | Primary database |
-| Redis | 6+ | Cache (optional) / sessions |
-| Nginx | any stable | Web server |
-| Supervisor | any stable | Queue worker daemon |
+<details>
+<summary><strong>数据存在哪里？会不会泄露？</strong></summary>
 
-`install.sh` does **not** install OS-level components, to avoid conflicts with control panels (BT Panel, cPanel, Plesk) or CI agents.
+所有数据（用户对话、记忆、附件、审计日志）都存在你自己的服务器 MySQL 与本地文件系统。除了你显式调用的模型 API（如 OpenAI）和飞书 API 外，Mifrog **不向任何第三方上报数据**。配置中的飞书 token、模型 API key 都在 DB 里加密存储。
+</details>
 
-#### Install steps
+<details>
+<summary><strong>支持哪些模型？</strong></summary>
 
-```bash
-sudo mkdir -p /var/www && cd /var/www
-sudo git clone https://github.com/Voellin/mifrog.chat.git mifrog
-cd mifrog
-sudo bash install.sh
-```
+原生支持 OpenAI 兼容协议的所有供应商：OpenAI · Azure OpenAI · Anthropic（兼容层）· 智谱 GLM · 月之暗面 Kimi · DeepSeek · 字节豆包 · 通义千问 · Together · Ollama / vLLM 等。在 Web 向导里填 base_url + api_key + model_name 即可。
+</details>
 
-The script will interactively ask for:
+<details>
+<summary><strong>多少人能用？性能如何？</strong></summary>
 
-- App URL (with scheme, e.g. `https://mifrog.example.com`)
-- Web process user (default `www-data`)
-- MySQL host/port + root credentials (for DB and app-user creation)
-- App DB name/user/password (blank password is auto-generated)
-- Redis host/port
+单机部署可稳定支持 **500 人规模** 的企业（按每人每天 20 次请求估算）。瓶颈通常是飞书 API 限流和模型 API 并发，而非本身的吞吐。需要更大规模可水平扩展 worker。
+</details>
 
-Then it will:
+<details>
+<summary><strong>是开源的吗？商用有限制吗？</strong></summary>
 
-1. Check PHP version, extensions, and clients
-2. Copy `bin/lark-cli` to `/usr/local/bin/lark-cli`
-3. Create the MySQL database and app user
-4. Write `.env` with reasonable defaults
-5. `composer install --no-dev --optimize-autoloader`
-6. Run `php artisan key:generate` and `storage:link`
-7. Render Nginx / Supervisor / crontab templates into `install_artifacts/output/`
-8. Set file permissions
+**MIT 协议** 开源，商业可用，无任何使用人数 / 部署服务器数限制。
+</details>
 
-#### Wire up the infrastructure
+---
 
-Follow the script's final guidance to copy the generated artifacts:
+## 📚 资源
 
-```bash
-sudo cp install_artifacts/output/nginx-mifrog.conf /etc/nginx/conf.d/
-sudo nginx -t && sudo nginx -s reload   # Then edit the file to fill SSL paths
+- 🌐 **官网**：[https://mifrog.chat](https://mifrog.chat)
+- 🎯 **在线 Demo**：[https://mifrog.chat/demo](https://mifrog.chat/demo) （admin / 123456）
+- 🐛 **报告 Bug**：[GitHub Issues](https://github.com/Voellin/mifrog.chat/issues)
+- 💬 **讨论**：[GitHub Discussions](https://github.com/Voellin/mifrog.chat/discussions)
 
-sudo cp install_artifacts/output/supervisor-mifrog.ini /etc/supervisor/conf.d/   # Ubuntu/Debian
-# Or /etc/supervisord.d/                                                          # CentOS
-sudo supervisorctl reread && sudo supervisorctl update
+---
 
-sudo crontab -e
-# Paste content of install_artifacts/output/mifrog-crontab.txt
-```
+## 🙏 致谢
 
-#### Complete the web wizard
+- 飞书开放平台 + [lark-cli](https://github.com/larksuite/lark-cli) —— 提供完整的飞书 API 接入能力
+- [Laravel](https://laravel.com) · [Chart.js](https://www.chartjs.org) —— 主要技术栈
 
-Browse to `https://yourdomain.com/setup` and fill in:
+---
 
-- Feishu custom app: App ID / Secret / Encrypt Key / Verification Token
-- Model API: Base URL (default `https://api.openai.com/v1`) / API Key / model name (e.g. `gpt-4o-mini`)
-- Admin account: username / display name / password (>= 8 chars)
-- Default monthly token quota (0 means unlimited)
+## 📜 License
 
-On submit, Laravel runs the schema dump, writes settings, creates the admin user, and saves `storage/app/setup.lock`. You'll be redirected to `/admin/login`.
+[MIT](LICENSE) © [Voellin](https://github.com/Voellin)
 
-#### Upgrade & maintenance
-
-- Upgrade Mifrog: `git pull && composer install --no-dev && php artisan migrate --force && supervisorctl restart mifrog:*`
-- Upgrade lark-cli: replace `bin/lark-cli` then `cp bin/lark-cli /usr/local/bin/lark-cli`
-- Re-enter the install wizard: delete `storage/app/setup.lock`, then visit `/setup` again
+仓库内 `bin/lark-cli` 二进制由飞书官方在 MIT 协议下分发，详见 [LICENSE](LICENSE) 末尾的 third-party notice。
