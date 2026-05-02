@@ -17,48 +17,37 @@
             <stop offset="100%" stop-color="#010102" stop-opacity="0"/>
         </radialGradient>
     </defs>
-
-    <!-- 背景 -->
     <rect width="1280" height="360" fill="#010102"/>
     <rect width="1280" height="360" fill="url(#bgGlow)"/>
-
-    <!-- 顶部 hairline -->
     <line x1="0" y1="1" x2="1280" y2="1" stroke="#23252a" stroke-width="1"/>
-
-    <!-- Logo -->
-    <g transform="translate(496, 78)">
-        <rect width="80" height="80" rx="18" fill="url(#brandGrad)"/>
-        <rect width="80" height="20" rx="18" fill="#ffffff" opacity="0.08"/>
-        <text x="40" y="40" font-family="-apple-system, 'SF Pro Display', 'Segoe UI', system-ui, Arial, sans-serif"
-              font-size="46" font-weight="700"
-              fill="#ffffff"
-              text-anchor="middle"
-              dominant-baseline="central">M</text>
+    <g transform="translate(600 78)">
+        <rect width="80" height="80" rx="18" ry="18" fill="url(#brandGrad)"/>
+        <rect width="80" height="22" rx="18" ry="18" fill="#ffffff" opacity="0.08"/>
+        <g transform="translate(40 40)">
+            <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+                  font-size="46" font-weight="700"
+                  fill="#ffffff"
+                  text-anchor="middle"
+                  dominant-baseline="central">M</text>
+        </g>
     </g>
-
-    <!-- 主标题 -->
-    <text x="640" y="208" font-family="-apple-system, 'SF Pro Display', 'Segoe UI', 'PingFang SC', system-ui, sans-serif"
+    <text x="640" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', system-ui, sans-serif"
           font-size="58" font-weight="600"
           fill="url(#titleGrad)" text-anchor="middle"
           letter-spacing="-2">
-        <tspan>Mifrog · </tspan><tspan fill="url(#accentGrad)">米蛙</tspan>
+        <tspan>Mifrog &#183; </tspan><tspan fill="url(#accentGrad)">米蛙</tspan>
     </text>
-
-    <!-- 副标 -->
-    <text x="640" y="250" font-family="-apple-system, 'SF Pro Display', 'Segoe UI', 'PingFang SC', system-ui, sans-serif"
+    <text x="640" y="250" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', system-ui, sans-serif"
           font-size="20" font-weight="400"
           fill="#d0d6e0" text-anchor="middle"
           letter-spacing="-0.4">
         你的飞书，接入 AI 执行大脑
     </text>
-
-    <!-- 副线 -->
-    <text x="640" y="296" font-family="-apple-system, 'SF Pro Display', system-ui, sans-serif"
+    <text x="640" y="296" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
           font-size="13" font-weight="500"
           fill="#8a8f98" text-anchor="middle"
           letter-spacing="2">
-        OPEN SOURCE  ·  SELF-HOSTED  ·  ENTERPRISE-READY
+        OPEN SOURCE  &#183;  SELF-HOSTED  &#183;  ENTERPRISE-READY
     </text>
-
-    <!-- 底部 hairline -->
-    <line x1="0" y1="359" x2="1280" y2="359" st
+    <line x1="0" y1="359" x2="1280" y2="359" stroke="#23252a" stroke-width="1"/>
+</svg>
