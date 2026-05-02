@@ -40,7 +40,7 @@ sudo yum install -y php-mysqlnd php-redis php-mbstring php-bcmath \
 ```bash
 # 1. 克隆仓库到任一稳定路径（推荐 /var/www/mifrog 或 /opt/mifrog）
 sudo mkdir -p /var/www && cd /var/www
-sudo git clone https://github.com/Voellin/Mifrog.git mifrog
+sudo git clone https://github.com/Voellin/mifrog.chat.git mifrog
 cd mifrog
 
 # 2. 运行一键安装脚本
@@ -127,7 +127,7 @@ Before running `install.sh`, the host must have:
 
 ```bash
 sudo mkdir -p /var/www && cd /var/www
-sudo git clone https://github.com/Voellin/Mifrog.git mifrog
+sudo git clone https://github.com/Voellin/mifrog.chat.git mifrog
 cd mifrog
 sudo bash install.sh
 ```
