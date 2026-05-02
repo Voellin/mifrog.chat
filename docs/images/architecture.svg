@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700">
+    <defs>
+        <linearGradient id="lavenderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#5e6ad2"/>
+            <stop offset="100%" stop-color="#828fff"/>
+        </linearGradient>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#5e6ad2"/>
+        </marker>
+        <marker id="arrowDim" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#62666d"/>
+        </marker>
+    </defs>
+
+    <!-- 背景 -->
+    <rect width="1200" height="700" fill="#010102"/>
+
+    <!-- 标题 -->
+    <text x="600" y="50" font-family="-apple-system, system-ui, 'PingFang SC', sans-serif"
+          font-size="22" font-weight="600"
+          fill="#f7f8f8" text-anchor="middle" letter-spacing="-0.6">
+        Mifrog 架构概览 / Architecture Overview
+    </text>
+    <text x="600" y="76" font-family="-apple-system, system-ui, 'PingFang SC', sans-serif"
+          font-size="13" font-weight="400"
+          fill="#8a8f98" text-anchor="middle" letter-spacing="0.4">
+        Feishu Webhook  →  Mifrog Core  →  LLM + Feishu API
+    </text>
+
+    <!-- ============ 左侧：飞书 ============ -->
+    <g transform="translate(60, 140)">
+        <rect width="220" height="420" rx="12" fill="#0f1011" stroke="#23252a" stroke-width="1"/>
+        <text x="110" y="32" font-family="-apple-system, system-ui, sans-serif"
+              font-size="13" font-weight="500" fill="#5e6ad2" text-anchor="middle"
+              letter-spacing="0.4" text-transform="uppercase">FEISHU / 飞书</text>
+        <line x1="20" y1="46" x2="200" y2="46" stroke="#23252a" stroke-width="1"/>
+
+        <!-- 用户消息 -->
+        <g transform="translate(20, 70)">
+            <rect width="180" height="48" rx="6" fill="#141516" stroke="#23252a"/>
+            <text x="90" y="22" font-size="13" font-weight="500" fill="#f7f8f8" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">用户消息</text>
+            <text x="90" y="38" font-size="11" fill="#8a8f98" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">@机器人 / 私聊</text>
+        </g>
+
+        <!-- 文档 / 表格 / 日历 -->
+        <g transform="translate(20, 138)">
+            <rect width="180" height="48" rx="6" fill="#141516" stroke="#23252a"/>
+            <text x="90" y="22" font-size="13" font-weight="500" fill="#f7f8f8" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">文档 / 表格</text>
+            <text x="90" y="38" font-size="11" fill="#8a8f98" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">Doc · Sheet · Bitable</text>
+        </g>
+
+        <!-- 日程 / 任务 -->
+        <g transform="translate(20, 206)">
+            <rect width="180" height="48" rx="6" fill="#141516" stroke="#23252a"/>
+            <text x="90" y="22" font-size="13" font-weight="500" fill="#f7f8f8" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">日程 / 任务</text>
+            <text x="90" y="38" font-size="11" fill="#8a8f98" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">Calendar · Task</text>
+        </g>
+
+        <!-- 邮件 -->
+        <g transform="translate(20, 274)">
+            <rect width="180" height="48" rx="6" fill="#141516" stroke="#23252a"/>
+            <text x="90" y="22" font-size="13" font-weight="500" fill="#f7f8f8" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">邮件 / 审批</text>
+            <text x="90" y="38" font-size="11" fill="#8a8f98" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">Mail · Approval</text>
+        </g>
+
+        <!-- 组织架构 -->
+        <g transform="translate(20, 342)">
+            <rect width="180" height="48" rx="6" fill="#141516" stroke="#23252a"/>
+            <text x="90" y="22" font-size="13" font-weight="500" fill="#f7f8f8" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">组织 / 通讯录</text>
+            <text x="90" y="38" font-size="11" fill="#8a8f98" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">Contact · Org</text>
+        </g>
+    </g>
+
+    <!-- ============ 中央：Mifrog Core ============ -->
+    <g transform="translate(360, 140)">
+        <rect width="480" height="420" rx="14" fill="#0f1011" stroke="url(#lavenderGrad)" stroke-width="2"/>
+
+        <!-- header bar -->
+        <rect x="0" y="0" width="480" height="44" rx="14" fill="#141516"/>
+        <rect x="0" y="22" width="480" height="22" fill="#141516"/>
+        <text x="240" y="28" font-family="-apple-system, system-ui, sans-serif"
+              font-size="14" font-weight="600" fill="#f7f8f8" text-anchor="middle"
+              letter-spacing="-0.4">
+            🐸 Mifrog Core (Laravel)
+        </text>
+
+        <!-- 4 个模块 2x2 grid -->
+        <g transform="translate(24, 70)">
+            <rect width="200" height="100" rx="10" fill="#141516" stroke="#23252a"/>
+            <text x="100" y="32" font-size="13" font-weight="600" fill="#5e6ad2" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" letter-spacing="0.4">ROUTING</text>
+            <text x="100" y="56" font-size="11" fill="#d0d6e0" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">飞书 Webhook 接入</text>
+            <text x="100" y="74" font-size="11" fill="#d0d6e0" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">用户意图分发</text>
+            <text x="100" y="92" font-size="11" fill="#8a8f98" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">/webhooks/feishu/events</text>
+        </g>
+
+        <g transform="translate(256, 70)">
+            <rect width="200" height="100" rx="10" fill="#141516" stroke="#23252a"/>
+            <text x="100" y="32" font-size="13" font-weight="600" fill="#5e6ad2" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" letter-spacing="0.4">EXECUTION</text>
+            <text x="100" y="56" font-size="11" fill="#d0d6e0" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">Tool-calling Agent</text>
+            <text x="100" y="74" font-size="11" fill="#d0d6e0" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">Run + Tool Invocation</text>
+            <text x="100" y="92" font-size="11" fill="#8a8f98" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">queue:work + 状态机</text>
+        </g>
+
+        <g transform="translate(24, 188)">
+            <rect width="200" height="100" rx="10" fill="#141516" stroke="#23252a"/>
+            <text x="100" y="32" font-size="13" font-weight="600" fill="#5e6ad2" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" letter-spacing="0.4">MEMORY</text>
+            <text x="100" y="56" font-size="11" fill="#d0d6e0" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">L1 会话 / L2 事项</text>
+            <text x="100" y="74" font-size="11" fill="#d0d6e0" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">L3 长期事实</text>
+            <text x="100" y="92" font-size="11" fill="#8a8f98" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">关键词 + 文件 + DB</text>
+        </g>
+
+        <g transform="translate(256, 188)">
+            <rect width="200" height="100" rx="10" fill="#141516" stroke="#23252a"/>
+            <text x="100" y="32" font-size="13" font-weight="600" fill="#5e6ad2" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" letter-spacing="0.4">AUDIT + QUOTA</text>
+            <text x="100" y="56" font-size="11" fill="#d0d6e0" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">敏感词审计</text>
+            <text x="100" y="74" font-size="11" fill="#d0d6e0" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">配额池 + 操作日志</text>
+            <text x="100" y="92" font-size="11" fill="#8a8f98" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">企业级治理</text>
+        </g>
+
+        <!-- 底部存储 -->
+        <g transform="translate(24, 312)">
+            <text x="0" y="0" font-size="11" fill="#62666d" font-family="-apple-system, system-ui, sans-serif" letter-spacing="0.4">PERSISTENCE</text>
+            <rect x="0" y="14" width="100" height="36" rx="6" fill="#141516" stroke="#23252a"/>
+            <text x="50" y="36" font-size="11" font-weight="500" fill="#d0d6e0" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">MySQL</text>
+            <rect x="112" y="14" width="100" height="36" rx="6" fill="#141516" stroke="#23252a"/>
+            <text x="162" y="36" font-size="11" font-weight="500" fill="#d0d6e0" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">Redis</text>
+            <rect x="224" y="14" width="100" height="36" rx="6" fill="#141516" stroke="#23252a"/>
+            <text x="274" y="36" font-size="11" font-weight="500" fill="#d0d6e0" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">Filesystem</text>
+            <rect x="336" y="14" width="120" height="36" rx="6" fill="#141516" stroke="#23252a"/>
+            <text x="396" y="36" font-size="11" font-weight="500" fill="#d0d6e0" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">Supervisor Worker</text>
+        </g>
+    </g>
+
+    <!-- ============ 右侧：外部依赖 ============ -->
+    <g transform="translate(920, 140)">
+        <rect width="220" height="420" rx="12" fill="#0f1011" stroke="#23252a" stroke-width="1"/>
+        <text x="110" y="32" font-family="-apple-system, system-ui, sans-serif"
+              font-size="13" font-weight="500" fill="#5e6ad2" text-anchor="middle"
+              letter-spacing="0.4" text-transform="uppercase">EXTERNAL</text>
+        <line x1="20" y1="46" x2="200" y2="46" stroke="#23252a" stroke-width="1"/>
+
+        <!-- LLM API -->
+        <g transform="translate(20, 70)">
+            <rect width="180" height="64" rx="8" fill="#141516" stroke="#23252a"/>
+            <text x="90" y="24" font-size="13" font-weight="600" fill="#f7f8f8" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">LLM Gateway</text>
+            <text x="90" y="44" font-size="11" fill="#8a8f98" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">OpenAI · Azure</text>
+            <text x="90" y="58" font-size="11" fill="#8a8f98" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">DeepSeek · Ollama …</text>
+        </g>
+
+        <!-- lark-cli -->
+        <g transform="translate(20, 154)">
+            <rect width="180" height="64" rx="8" fill="#141516" stroke="#23252a"/>
+            <text x="90" y="24" font-size="13" font-weight="600" fill="#f7f8f8" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">lark-cli</text>
+            <text x="90" y="44" font-size="11" fill="#8a8f98" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">飞书官方 CLI 二进制</text>
+            <text x="90" y="58" font-size="11" fill="#8a8f98" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">用户级 OAuth + API</text>
+        </g>
+
+        <!-- Feishu Open API -->
+        <g transform="translate(20, 238)">
+            <rect width="180" height="64" rx="8" fill="#141516" stroke="#23252a"/>
+            <text x="90" y="24" font-size="13" font-weight="600" fill="#f7f8f8" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">Feishu Open API</text>
+            <text x="90" y="44" font-size="11" fill="#8a8f98" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">/open-apis/im, drive,</text>
+            <text x="90" y="58" font-size="11" fill="#8a8f98" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">bitable, search …</text>
+        </g>
+
+        <!-- Admin UI -->
+        <g transform="translate(20, 322)">
+            <rect width="180" height="64" rx="8" fill="#141516" stroke="#23252a"/>
+            <text x="90" y="24" font-size="13" font-weight="600" fill="#f7f8f8" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">Admin Dashboard</text>
+            <text x="90" y="44" font-size="11" fill="#8a8f98" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">用户 / 配额 / 审计</text>
+            <text x="90" y="58" font-size="11" fill="#8a8f98" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">设置 / 操作日志</text>
+        </g>
+    </g>
+
+    <!-- ============ 连线 ============ -->
+    <!-- 飞书 → Core (webhook) -->
+    <line x1="280" y1="180" x2="358" y2="220" stroke="#5e6ad2" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="320" y="190" font-size="10" fill="#5e6ad2" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">webhook</text>
+
+    <!-- Core → 飞书 (API call) -->
+    <line x1="358" y1="380" x2="280" y2="430" stroke="#62666d" stroke-width="1.5" marker-end="url(#arrowDim)" stroke-dasharray="4,4"/>
+    <text x="320" y="420" font-size="10" fill="#62666d" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif">API call</text>
+
+    <!-- Core → LLM -->
+    <line x1="842" y1="220" x2="918" y2="180" stroke="#5e6ad2" stroke-width="2" marker-end="url(#arrow)"/>
+    <!-- Core → lark-cli -->
+    <line x1="842" y1="280" x2="918" y2="280" stroke="#5e6ad2" stroke-width="2" marker-end="url(#arrow)"/>
+    <!-- Core → Feishu API -->
+    <line x1="842" y1="340" x2="918" y2="370" stroke="#5e6ad2" stroke-width="2" marker-end="url(#arrow)"/>
+    <!-- Core ↔ Admin -->
+    <line x1="842" y1="430" x2="918" y2="450" stroke="#62666d" stroke-width="1.5" marker-end="url(#arrowDim)" stroke-dasharray="4,4"/>
+
+    <!-- 底部图例 -->
+    <g transform="translate(60, 615)">
+        <line x1="0" y1="6" x2="30" y2="6" stroke="#5e6ad2" stroke-width="2"/>
+        <text x="40" y="10" font-size="11" fill="#8a8f98" font-family="-apple-system, system-ui, sans-serif">事件 / 请求</text>
+
+        <line x1="160" y1="6" x2="190" y2="6" stroke="#62666d" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <text x="200" y="10" font-size="11" fill="#8a8f98" font-family="-apple-system, system-ui, sans-serif">异步 / API 回调</text>
+
+        <text x="1140" y="10" font-size="10" fill="#62666d" text-anchor="end" font-family="-apple-system, system-ui, sans-serif">© Mifrog · MIT License</text>
+    </g>
+</svg>

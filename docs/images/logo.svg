@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+    <defs>
+        <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#5e6ad2"/>
+            <stop offset="100%" stop-color="#828fff"/>
+        </linearGradient>
+        <filter id="innerShadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+            <feOffset dx="0" dy="-2" result="offset"/>
+            <feFlood flood-color="#ffffff" flood-opacity="0.18"/>
+            <feComposite in2="offset" operator="in"/>
+            <feComposite in2="SourceGraphic" operator="over"/>
+        </filter>
+    </defs>
+    <!-- 圆角背景方块 -->
+    <rect x="8" y="8" width="240" height="240" rx="56" ry="56" fill="url(#brandGrad)"/>
+    <!-- 顶部高光 -->
+    <rect x="8" y="8" width="240" height="56" rx="56" ry="56" fill="#ffffff" opacity="0.08"/>
+    <!-- 字母 M -->
+    <text x="128" y="170" font-family="-apple-system, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif"
+          font-size="156" font-weight="700"
+          fill="#ffffff" text-anchor="middle"
+          letter-spacing="-6">M</text>
+</svg>
