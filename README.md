@@ -137,7 +137,7 @@ sudo crontab -e   # 把 mifrog-crontab.txt 内容贴进去
 # https://yourdomain.com/setup → 填飞书 App / 模型 API / 管理员账号 → 完成
 ```
 
-> 详细参数说明、飞书开放平台配置、SSL 证书申请等见 [完整部署文档](docs/DEPLOY.md)（开发中）
+> 📖 **详细配置指南**：[飞书应用配置 + install.sh 完整安装手册](https://vcno26d3qz3w.feishu.cn/docx/OSiGdCa1tooKd9x19COcVOa5nld)
 
 ### 升级与维护
 
@@ -188,6 +188,7 @@ sudo supervisorctl restart mifrog:*
 
 - 🌐 **官网**：[https://mifrog.chat](https://mifrog.chat)
 - 🎯 **在线 Demo**：[https://mifrog.chat/demo](https://mifrog.chat/demo) （admin / 123456）
+- 📖 **完整配置指南**：[飞书应用配置 + 安装手册](https://vcno26d3qz3w.feishu.cn/docx/OSiGdCa1tooKd9x19COcVOa5nld)
 - 🐛 **报告 Bug**：[GitHub Issues](https://github.com/Voellin/mifrog.chat/issues)
 - 💬 **讨论**：[GitHub Discussions](https://github.com/Voellin/mifrog.chat/discussions)
 
