@@ -29,10 +29,11 @@
     <g transform="translate(496, 78)">
         <rect width="80" height="80" rx="18" fill="url(#brandGrad)"/>
         <rect width="80" height="20" rx="18" fill="#ffffff" opacity="0.08"/>
-        <text x="40" y="58" font-family="-apple-system, 'SF Pro Display', system-ui, sans-serif"
-              font-size="50" font-weight="700"
-              fill="#ffffff" text-anchor="middle"
-              letter-spacing="-2">M</text>
+        <text x="40" y="40" font-family="-apple-system, 'SF Pro Display', 'Segoe UI', system-ui, Arial, sans-serif"
+              font-size="46" font-weight="700"
+              fill="#ffffff"
+              text-anchor="middle"
+              dominant-baseline="central">M</text>
     </g>
 
     <!-- 主标题 -->
@@ -60,5 +61,4 @@
     </text>
 
     <!-- 底部 hairline -->
-    <line x1="0" y1="359" x2="1280" y2="359" stroke="#23252a" stroke-width="1"/>
-</svg>
+    <line x1="0" y1="359" x2="1280" y2="359" st
