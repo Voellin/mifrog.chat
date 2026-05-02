@@ -1,3 +1,11 @@
+#### 全链路配置Step-by-step：https://vcno26d3qz3w.feishu.cn/docx/OSiGdCa1tooKd9x19COcVOa5nld
+
+- Demo体验地址：https://vcno26d3qz3w.feishu.cn/docx/OSiGdCa1tooKd9x19COcVOa5nld
+
+- 用户名：admin
+
+- 密码：123456
+
 ### 中文版
 
 #### 前置环境
