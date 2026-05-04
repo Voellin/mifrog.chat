@@ -220,7 +220,7 @@ class FeishuBaseTaskServiceTest extends TestCase
                 'data' => [
                     'fields' => ['验证项', '负责人', '状态'],
                     'data' => [
-                        ['tool calling 全链路', '用户A', '已通过'],
+                        ['tool calling 全链路', '东方', '已通过'],
                     ],
                 ],
             ]);

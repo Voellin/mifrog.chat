@@ -109,6 +109,15 @@ class FeishuService
         return $this->push->pushTextToOpenId($openId, $text);
     }
 
+    /**
+     * 向 chat 发送 markdown 富文本（schema 2.0 interactive card 内嵌 markdown 元素）。
+     * 失败返回 false——caller 可降级到 pushTextToChat。
+     */
+    public function pushMarkdownToChat(string $chatId, string $markdown): bool
+    {
+        return $this->push->pushInteractiveMarkdownToChat($chatId, $markdown);
+    }
+
     /** @param string[] $scopes */
     public function pushAuthorizationCard(Run $run, string $oauthUrl, array $scopes = []): bool
     {

@@ -956,6 +956,7 @@ class ToolCallingAgentService
         $leadingNoisePatterns = [
             '/^\s*(?:抱歉(?:呀|哈|呢)?|不好意思|对不起)[，,。\s]*/u',
             '/^\s*(?:你好|您好|嗨|哈喽)[，,。\s]*/u',
+            '/^\s*东方[，,。\s]*/u',
         ];
         foreach ($leadingNoisePatterns as $pattern) {
             while (preg_match($pattern, $content) === 1) {

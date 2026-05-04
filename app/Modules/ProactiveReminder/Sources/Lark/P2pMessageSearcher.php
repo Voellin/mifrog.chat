@@ -198,7 +198,7 @@ class P2pMessageSearcher
 
         // 按 chat_id 反查 chat-members：
         //  - 只返回自己 → 用户↔机器人 P2P，整个 chat 在调用方丢弃（_is_bot_chat=true）
-        //  - 返回多人 → 取非自己的那位 name 作为 peer_name，让 chat_name 推断为"私聊·用户B"
+        //  - 返回多人 → 取非自己的那位 name 作为 peer_name，让 chat_name 推断为"私聊·朱雀"
         // 缓存 24h（peer name 不会频繁变）。
         $chatIds = [];
         foreach ($messages as $m) {

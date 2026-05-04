@@ -78,7 +78,7 @@ class ChatActivitySource implements ActivitySourceInterface
 
         // 第一轮扫描：聚合 peer_name + 标记 bot chat。
         // 优先用 P2pMessageSearcher 反查 chat-members 注入的 _peer_name（最准），
-        // 兜底用对方发过的 sender.name（用户B今天没回的话拿不到，靠 _peer_name）。
+        // 兜底用对方发过的 sender.name（朱雀今天没回的话拿不到，靠 _peer_name）。
         $peerNameByChatId = [];
         $botChatIds = [];
         foreach ($p2pMessages as $message) {

@@ -3,7 +3,6 @@
 use App\Http\Controllers\Api\Admin\ConfigController as AdminConfigController;
 use App\Http\Controllers\Api\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Api\Admin\SkillController as AdminSkillController;
-use App\Http\Controllers\Api\ChatController;
 use App\Http\Controllers\Api\FeishuWebhookController;
 use App\Http\Controllers\Api\RunStreamController;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('installed')->group(function (): void {
-    Route::post('/chat/send', [ChatController::class, 'send']);
     Route::get('/runs/{run}/stream', [RunStreamController::class, 'stream'])->middleware('run.stream');
 
     Route::prefix('admin')->middleware('admin.token')->group(function (): void {

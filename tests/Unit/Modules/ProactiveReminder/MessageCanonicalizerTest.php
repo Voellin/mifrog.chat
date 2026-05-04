@@ -11,8 +11,8 @@ class MessageCanonicalizerTest extends TestCase
     {
         $canonicalizer = new MessageCanonicalizer();
 
-        $first = "用户A总，刚收到同事消息，需要我帮您对接吗？";
-        $second = "  用户A总，刚收到同事消息，需要我帮您对接吗？  ";
+        $first = "东方总，刚收到同事消息，需要我帮您对接吗？";
+        $second = "  东方总，刚收到同事消息，需要我帮您对接吗？  ";
 
         $this->assertSame($canonicalizer->hash($first), $canonicalizer->hash($second));
     }

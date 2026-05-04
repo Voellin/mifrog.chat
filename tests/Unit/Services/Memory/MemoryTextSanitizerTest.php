@@ -13,7 +13,7 @@ class MemoryTextSanitizerTest extends TestCase
 
         $text = "王林您好呀，已经帮你创建好营销会议文档啦。\n链接是 https://example.com/doc\n要不要我再继续补充竞品分析？";
 
-        $result = $sanitizer->sanitizeAssistantReply($text, ['用户A']);
+        $result = $sanitizer->sanitizeAssistantReply($text, ['东方']);
 
         $this->assertStringNotContainsString('王林', $result);
         $this->assertStringNotContainsString('要不要我', $result);

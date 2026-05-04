@@ -22,10 +22,10 @@ class MemoryKeywordExtractorTest extends TestCase
     {
         $extractor = new MemoryKeywordExtractor();
 
-        $keywords = $extractor->extract('请分析蕉下和用户A在秋冬新品项目里的重点。');
+        $keywords = $extractor->extract('请分析蕉下和东方在秋冬新品项目里的重点。');
 
         $this->assertContains('蕉下', $keywords);
-        $this->assertContains('用户A', $keywords);
+        $this->assertContains('东方', $keywords);
         $this->assertTrue(collect($keywords)->contains(
             fn (string $keyword): bool => str_contains($keyword, '秋冬') || str_contains($keyword, '新品')
         ));

@@ -48,6 +48,7 @@
                     ['permission' => 'skills.view', 'href' => '/admin/skills', 'label' => '技能管理', 'active' => request()->is('admin/skills*'), 'icon' => 'M20 6h-3.17A3 3 0 0 0 14 4H10a3 3 0 0 0-2.83 2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2ZM10 6h4v2h-4V6Z'],
                     ['permission' => 'memory.view', 'href' => '/admin/memory', 'label' => '记忆中心', 'active' => request()->is('admin/memory*'), 'icon' => 'M6 4h8a4 4 0 0 1 4 4v10a2 2 0 0 1-2 2H6a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4Zm2 5h6v2H8V9Zm0 4h4v2H8v-2Z'],
                     ['permission' => 'audits.view', 'href' => '/admin/audits', 'label' => '审计中心', 'active' => request()->is('admin/audits*'), 'icon' => 'M11 3 4 6v5c0 5.25 3.62 10.16 8.5 11.43A12.2 12.2 0 0 0 21 11V6l-7-3h-3Zm0 7h2v5h-2v-5Zm0 6h2v2h-2v-2Z'],
+                    ['permission' => 'doppelganger.view', 'href' => '/admin/doppelgangers', 'label' => '数字分身', 'active' => request()->is('admin/doppelgangers*'), 'icon' => 'M12 2a5 5 0 0 0-5 5v2a5 5 0 0 0 4 4.9V14a3 3 0 0 0-3 3v3h2v-3a1 1 0 0 1 2 0v3h2v-3a1 1 0 0 1 2 0v3h2v-3a3 3 0 0 0-3-3v-.1A5 5 0 0 0 17 9V7a5 5 0 0 0-5-5Zm-3 5a3 3 0 0 1 6 0v2a3 3 0 0 1-6 0V7Z'],
                 ];
             @endphp
 

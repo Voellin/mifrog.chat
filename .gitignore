@@ -43,3 +43,11 @@ Thumbs.db
 # Runtime backups (created before in-place edits) and uploads
 /storage/backups/
 /public/uploads/
+
+# BOUNDARY docs — 本地保留供 AI agent / 工程师阅读，不同步到 GitHub
+*BOUNDARY*.md
+*boundary*.md
+docs/adr-001-feishu-cli-http-boundary.md
+
+# 历史清洗备份（filter-repo 留下的）
+/.git.bak*/

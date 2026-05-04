@@ -286,7 +286,7 @@ class SkillApiExecutorServiceTest extends TestCase
                     ['name' => 'keyword', 'api_key' => 'q', 'required' => true],
                 ],
             ],
-            ['keyword' => '示例产品'],
+            ['keyword' => '防晒衣'],
             $this->makeUser()
         );
 

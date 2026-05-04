@@ -106,6 +106,49 @@ class FeishuPushService
     /**
      * @param  string[]  $scopes
      */
+    /**
+     * 向 chat 发送 markdown 富文本（用 schema 2.0 interactive card + markdown 元素实现）。
+     * 用于数字分身回复等需要加粗/列表/链接/分隔线的场景。
+     * 失败返回 false——上层可 fall back 到 pushTextToChat。
+     */
+    public function pushInteractiveMarkdownToChat(string $chatId, string $markdown): bool
+    {
+        $chatId = trim($chatId);
+        $markdown = trim($markdown);
+        if ($chatId === '' || $markdown === '') {
+            return false;
+        }
+
+        $config = $this->transport->readConfig();
+        if (! $config['enabled']) {
+            return false;
+        }
+
+        $token = $this->transport->tenantToken($config['app_id'], $config['app_secret']);
+        if (! $token) {
+            return false;
+        }
+
+        $card = [
+            'schema' => '2.0',
+            'config' => [
+                'update_multi' => true,
+            ],
+            'body' => [
+                'direction' => 'vertical',
+                'elements' => [
+                    [
+                        'tag' => 'markdown',
+                        'content' => $markdown,
+                    ],
+                ],
+            ],
+        ];
+
+        $messageId = $this->transport->sendInteractiveCard($token, $chatId, $card);
+        return $messageId !== null;
+    }
+
     public function pushAuthorizationCard(Run $run, string $oauthUrl, array $scopes = []): bool
     {
         $oauthUrl = trim($oauthUrl);

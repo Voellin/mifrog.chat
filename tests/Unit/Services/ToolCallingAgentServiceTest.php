@@ -104,7 +104,7 @@ class ToolCallingAgentServiceTest extends TestCase
         $llmGatewayService->expects($this->once())
             ->method('chatWithTools')
             ->willReturn([
-                'content' => "抱歉呀用户A\n**我目前不能直接访问 IM一对一/群聊历史。**",
+                'content' => "抱歉呀东方\n**我目前不能直接访问 IM一对一/群聊历史。**",
                 'tool_calls' => [],
                 'model' => 'planner-model',
                 'input_tokens' => 5,
@@ -293,14 +293,14 @@ class ToolCallingAgentServiceTest extends TestCase
         ];
         $failedAdd = [
             'status' => 'failed',
-            'message' => 'user not found: 用户B',
+            'message' => 'user not found: 朱雀',
             'input_tokens' => 1,
             'output_tokens' => 2,
         ];
         $normalizedFailedAdd = [
             'handled' => true,
             'status' => 'failed',
-            'answer' => 'user not found: 用户B',
+            'answer' => 'user not found: 朱雀',
             'model' => 'lark_cli.calendar',
             'task_kind' => 'feishu_calendar_attendees_add',
             'work_action' => 'calendar.attendees.add',
@@ -311,7 +311,7 @@ class ToolCallingAgentServiceTest extends TestCase
         $contactResult = [
             'status' => 'success',
             'message' => 'Matched contact.',
-            'users' => [['name' => '用户B', 'open_id' => 'ou_xxx']],
+            'users' => [['name' => '朱雀', 'open_id' => 'ou_xxx']],
             'input_tokens' => 1,
             'output_tokens' => 1,
         ];
@@ -371,7 +371,7 @@ class ToolCallingAgentServiceTest extends TestCase
                         'id' => 'call_1',
                         'function' => [
                             'name' => 'calendar_attendees_add',
-                            'arguments' => '{"event_id":"event_123","attendee_names":["用户B"]}',
+                            'arguments' => '{"event_id":"event_123","attendee_names":["朱雀"]}',
                         ],
                     ]],
                     'model' => 'planner-model',
@@ -384,7 +384,7 @@ class ToolCallingAgentServiceTest extends TestCase
                         'id' => 'call_2',
                         'function' => [
                             'name' => 'contact_lookup',
-                            'arguments' => '{"query":"用户B"}',
+                            'arguments' => '{"query":"朱雀"}',
                         ],
                     ]],
                     'model' => 'planner-model',
@@ -405,7 +405,7 @@ class ToolCallingAgentServiceTest extends TestCase
                     'output_tokens' => 5,
                 ],
                 [
-                    'content' => '用户B已经加到刚才的会议里了。',
+                    'content' => '朱雀已经加到刚才的会议里了。',
                     'tool_calls' => [],
                     'model' => 'planner-model',
                     'input_tokens' => 2,
@@ -423,8 +423,8 @@ class ToolCallingAgentServiceTest extends TestCase
                 ], $messages);
 
                 $expected = [
-                    [['event_id' => 'event_123', 'attendee_names' => ['用户B']], 'calendar.attendees.add', $failedAdd],
-                    [['query' => '用户B'], 'contact.lookup', $contactResult],
+                    [['event_id' => 'event_123', 'attendee_names' => ['朱雀']], 'calendar.attendees.add', $failedAdd],
+                    [['query' => '朱雀'], 'contact.lookup', $contactResult],
                     [['event_id' => 'event_123', 'attendee_user_ids' => ['ou_xxx']], 'calendar.attendees.add', $successfulAdd],
                 ];
 
@@ -467,7 +467,7 @@ class ToolCallingAgentServiceTest extends TestCase
         ]);
 
         $this->assertSame('agent_task_response', $result['type']);
-        $this->assertSame('用户B已经加到刚才的会议里了。', $result['content']);
+        $this->assertSame('朱雀已经加到刚才的会议里了。', $result['content']);
         $this->assertSame($calendarAction, $result['work_action']);
         $this->assertSame($normalizedSuccessfulAdd, $result['platform_result']);
         $this->assertCount(3, $result['tool_trace']);

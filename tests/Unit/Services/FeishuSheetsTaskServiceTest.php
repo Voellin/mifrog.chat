@@ -64,7 +64,7 @@ class FeishuSheetsTaskServiceTest extends TestCase
             'action' => 'write',
             'spreadsheet_url' => 'https://example.feishu.cn/sheets/token-123',
             'range' => 'Sheet1!A4:D4',
-            'data' => [['复杂场景冒烟', '进行中', '用户A', '今天']],
+            'data' => [['复杂场景冒烟', '进行中', '东方', '今天']],
         ]);
 
         $this->assertSame('success', $result['status']);
@@ -183,7 +183,7 @@ class FeishuSheetsTaskServiceTest extends TestCase
         $result = $service->execute(new Run(), [
             'action' => 'append',
             'spreadsheet_url' => 'https://example.feishu.cn/sheets/token-123',
-            'data' => [['complex-smoke', 'running', '用户A', 'today']],
+            'data' => [['complex-smoke', 'running', '东方', 'today']],
         ]);
 
         $this->assertSame('success', $result['status']);

@@ -483,7 +483,7 @@ class ChatTaskService extends AbstractFeishuTaskService
      * 命中返回 normalize 过的 records；未命中返回 null（让调用方 fallback 飞书 API）。
      *
      * 匹配策略（fallback 友好）：
-     *  - participant_names: 在 attachment file_name LIKE '%name%' 模糊匹配（chat_name 推断为 "私聊·用户B" / 群聊 chat_name）
+     *  - participant_names: 在 attachment file_name LIKE '%name%' 模糊匹配（chat_name 推断为 "私聊·朱雀" / 群聊 chat_name）
      *  - group_name: 同样走 file_name LIKE
      *  - keyword: chunks.content LIKE
      *  - 时间窗口: file_key 形如 "{chat_id}:YYYY-MM-DD"，按日期截
@@ -571,7 +571,7 @@ class ChatTaskService extends AbstractFeishuTaskService
         }
 
         // 把每个 chunk 拆出 transcript 行，转成 record。chunk content 形如：
-        // "[15:10 我→私聊·用户B] 你记得后天准备一下618的营销节奏汇报"
+        // "[15:10 我→私聊·朱雀] 你记得后天准备一下618的营销节奏汇报"
         $attachmentMap = $attachments->keyBy('id');
         $records = [];
         foreach ($chunks as $chunk) {
@@ -649,7 +649,7 @@ class ChatTaskService extends AbstractFeishuTaskService
             $direction = 'sent';
             $sender = '我';
         } else {
-            // "用户B→我"
+            // "朱雀→我"
             $parts = explode('→', $arrow, 2);
             if (isset($parts[0]) && trim($parts[0]) !== '') {
                 $sender = trim($parts[0]);

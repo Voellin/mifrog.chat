@@ -15,19 +15,19 @@ class MemoryRecallScorerTest extends TestCase
         $extractor = new MemoryKeywordExtractor();
         $policy = new MemoryLayerPolicy(new MemoryTextSanitizer());
         $scorer = new MemoryRecallScorer($extractor, $policy);
-        $queryKeywords = $extractor->extract('继续做示例产品市场大盘');
+        $queryKeywords = $extractor->extract('继续做防晒衣市场大盘');
 
         $projectScore = $scorer->scoreEntry(
-            '继续做示例产品市场大盘',
+            '继续做防晒衣市场大盘',
             $queryKeywords,
-            '继续推进示例产品市场大盘和营销会议输入文档',
-            $extractor->extract('继续推进示例产品市场大盘和营销会议输入文档'),
+            '继续推进防晒衣市场大盘和营销会议输入文档',
+            $extractor->extract('继续推进防晒衣市场大盘和营销会议输入文档'),
             ['source:user', 'kind:episodic_context'],
             now()->subDays(45)->toDateTimeString()
         );
 
         $breakfastScore = $scorer->scoreEntry(
-            '继续做示例产品市场大盘',
+            '继续做防晒衣市场大盘',
             $queryKeywords,
             '我今天早饭吃了包子和豆浆',
             $extractor->extract('我今天早饭吃了包子和豆浆'),

@@ -39,7 +39,7 @@ class ChatActivitySourceTest extends TestCase
                             'chat_id' => 'oc_chat_1',
                             'chat_name' => '项目群',
                             'chat_type' => 'group',
-                            'sender_name' => '用户B',
+                            'sender_name' => '朱雀',
                             'sender' => ['id' => 'ou_zhuque', 'sender_type' => 'user'],
                             'content' => '这周先把样衣清单补齐',
                             'create_time' => '2026-04-12T13:55:00+08:00',
@@ -56,7 +56,7 @@ class ChatActivitySourceTest extends TestCase
         $source = new ChatActivitySource($cliClient, new ActivityTimeParser(), new MessageCanonicalizer(), $p2pSearcher);
         $request = new ReminderScanRequest(
             userId: 5,
-            userName: '用户B',
+            userName: '朱雀',
             openId: 'ou_zhuque',
             since: CarbonImmutable::parse('2026-04-12 13:30:00', 'Asia/Shanghai'),
             until: CarbonImmutable::parse('2026-04-12 14:00:00', 'Asia/Shanghai'),
@@ -81,20 +81,20 @@ class ChatActivitySourceTest extends TestCase
 
         $p2pSearcher = $this->createMock(P2pMessageSearcher::class);
         $p2pSearcher->expects($this->once())->method('search')->willReturn([
-            // 用户自己发的（用户B私聊）
+            // 用户自己发的（朱雀私聊）
             [
                 'message_id' => 'om_1',
                 'chat_id' => 'oc_zhuque_p2p',
-                'sender' => ['id' => 'ou_self', 'sender_type' => 'user', 'name' => '用户A'],
+                'sender' => ['id' => 'ou_self', 'sender_type' => 'user', 'name' => '东方'],
                 'content' => '你记得后天准备一下618的营销节奏汇报',
                 'create_time' => '2026-04-29 15:10',
                 'msg_type' => 'text',
             ],
-            // 用户B的回复（用来定 peer_name）
+            // 朱雀的回复（用来定 peer_name）
             [
                 'message_id' => 'om_2',
                 'chat_id' => 'oc_zhuque_p2p',
-                'sender' => ['id' => 'ou_zhuque', 'sender_type' => 'user', 'name' => '用户B'],
+                'sender' => ['id' => 'ou_zhuque', 'sender_type' => 'user', 'name' => '朱雀'],
                 'content' => '收到',
                 'create_time' => '2026-04-29 15:11',
                 'msg_type' => 'text',
@@ -113,7 +113,7 @@ class ChatActivitySourceTest extends TestCase
         $source = new ChatActivitySource($cliClient, new ActivityTimeParser(), new MessageCanonicalizer(), $p2pSearcher);
         $request = new ReminderScanRequest(
             userId: 3,
-            userName: '用户A',
+            userName: '东方',
             openId: 'ou_self',
             since: CarbonImmutable::parse('2026-04-29 00:00:00', 'Asia/Shanghai'),
             until: CarbonImmutable::parse('2026-04-29 23:59:59', 'Asia/Shanghai'),
@@ -125,12 +125,12 @@ class ChatActivitySourceTest extends TestCase
 
         $this->assertCount(1, $results);
         $records = $results[0]->records;
-        // 2 条 P2P（用户B双向），机器人卡片被过滤
+        // 2 条 P2P（朱雀双向），机器人卡片被过滤
         $this->assertCount(2, $records);
 
-        // 双向消息都应归到"私聊·用户B"（peer_name 由用户B的 sender 推断）
+        // 双向消息都应归到"私聊·朱雀"（peer_name 由朱雀的 sender 推断）
         $chatNames = array_unique(array_column($records, 'chat_name'));
-        $this->assertSame(['私聊·用户B'], array_values($chatNames));
+        $this->assertSame(['私聊·朱雀'], array_values($chatNames));
 
         // direction 检验
         $directions = array_column($records, 'direction');

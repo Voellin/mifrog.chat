@@ -436,7 +436,7 @@ class AdminSettingsController extends Controller
         return redirect('/admin/settings?tab=model')->with('status', '模型配置已保存。');
     }
 
-    public function testChannel(): RedirectResponse
+    public function testChannel(Request $request): RedirectResponse
     {
         $feishu = Setting::read('feishu', []);
         $appId = trim((string) Arr::get($feishu, 'app_id', ''));
@@ -477,7 +477,7 @@ class AdminSettingsController extends Controller
             ]);
     }
 
-    public function testModel(): RedirectResponse
+    public function testModel(Request $request): RedirectResponse
     {
         // R3b: 数据源全部切到表 + 两个新 settings；不再读 Setting('model_gateway')
         $provider = ModelProvider::query()

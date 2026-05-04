@@ -17,7 +17,7 @@ class DatabaseReminderStateStoreTest extends ProactiveReminderIntegrationTestCas
     {
         DB::table('users')->insert([
             'id' => 3,
-            'name' => '用户A',
+            'name' => '东方',
             'feishu_open_id' => 'ou_xxx',
             'is_active' => 1,
         ]);
@@ -39,7 +39,7 @@ class DatabaseReminderStateStoreTest extends ProactiveReminderIntegrationTestCas
 
         $request = new ReminderScanRequest(
             3,
-            '用户A',
+            '东方',
             'ou_xxx',
             CarbonImmutable::parse('2026-04-10 09:30:00'),
             CarbonImmutable::parse('2026-04-10 10:00:00'),

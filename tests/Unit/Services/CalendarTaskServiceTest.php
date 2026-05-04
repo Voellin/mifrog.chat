@@ -80,7 +80,7 @@ class CalendarTaskServiceTest extends TestCase
         $result = $service->addAttendeesToEvent(
             new Run(),
             [
-                'attendee_user_ids' => ['ou_demo_aaaaaaaa11111111111111111111'],
+                'attendee_user_ids' => ['ou_3db40cb1dac2013ad0afe74334552bf8'],
                 'user_id_type' => 'open_id',
             ],
             [

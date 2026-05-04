@@ -343,7 +343,7 @@ class ActivityArchiveKernel
         if ($chatName === '') {
             $chatName = '对话';
         }
-        // chat_name 已经是"私聊·用户B"这种格式，直接拼日期
+        // chat_name 已经是"私聊·朱雀"这种格式，直接拼日期
         return $chatName . ' ' . $date;
     }
 

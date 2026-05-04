@@ -133,7 +133,7 @@ class WeeklySummaryKernelTest extends TestCase
     {
         return new ReminderScanRequest(
             userId: 3,
-            userName: '用户A',
+            userName: '东方',
             openId: 'ou_xxx',
             since: CarbonImmutable::parse('2026-04-13 00:00:00', 'Asia/Shanghai'),
             until: CarbonImmutable::parse('2026-04-19 23:59:59', 'Asia/Shanghai'),

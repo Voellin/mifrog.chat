@@ -60,7 +60,7 @@ class DatabaseFallbackActivitySourceTest extends ProactiveReminderIntegrationTes
         $source = new DatabaseFallbackActivitySource(new ActivityTimeParser());
         $request = new ReminderScanRequest(
             userId: 3,
-            userName: '用户A',
+            userName: '东方',
             openId: 'ou_dongfang',
             since: CarbonImmutable::parse('2026-04-12 13:30:00', 'Asia/Shanghai'),
             until: CarbonImmutable::parse('2026-04-12 14:00:00', 'Asia/Shanghai'),

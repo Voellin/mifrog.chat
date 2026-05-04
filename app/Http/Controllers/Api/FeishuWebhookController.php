@@ -193,6 +193,61 @@ class FeishuWebhookController extends Controller
             return response()->json(['ok' => true, 'quick_reply' => true]);
         }
 
+        // ── Doppelganger Invocation: ~B：xxx 数字分身短路 ──
+        // 仿 QuickReply 模式：匹配 ~Name：/~Name: 前缀则交给 InvocationService 处理；
+        // 不匹配返回 null，落入下方常规 Run pipeline。
+        try {
+            $dopReply = app(\App\Modules\Doppelganger\Services\DoppelgangerInvocationService::class)
+                ->attempt($text, $user);
+        } catch (\Throwable $e) {
+            Log::error('feishu.webhook.doppelganger.error', [
+                'user_id' => $user->id,
+                'text' => mb_substr($text, 0, 200),
+                'error' => $e->getMessage(),
+            ]);
+            $dopReply = null;
+        }
+        if ($dopReply !== null) {
+            $conversation = Conversation::query()
+                ->where('user_id', $user->id)
+                ->where('channel', 'feishu')
+                ->where('channel_conversation_id', $chatId)
+                ->first();
+            if (! $conversation) {
+                $conversation = Conversation::query()->create([
+                    'user_id' => $user->id,
+                    'channel' => 'feishu',
+                    'channel_conversation_id' => $chatId,
+                ]);
+            }
+            Message::query()->create([
+                'conversation_id' => $conversation->id,
+                'user_id' => $user->id,
+                'role' => 'user',
+                'content' => $text,
+                'meta' => ['channel' => 'feishu', 'source_message_id' => $messageId, 'route' => 'doppelganger'],
+            ]);
+            Message::query()->create([
+                'conversation_id' => $conversation->id,
+                'role' => 'assistant',
+                'content' => $dopReply,
+                'meta' => ['source' => 'doppelganger'],
+            ]);
+            // 优先发 markdown 富文本（**加粗**/列表/分隔线渲染）；失败降级到 plain text。
+            $cardOk = $this->feishuService->pushMarkdownToChat($chatId, $dopReply);
+            if (! $cardOk) {
+                $this->feishuService->pushTextToChat($chatId, $dopReply);
+            }
+
+            Log::info('feishu.webhook.doppelganger', [
+                'user_id' => $user->id,
+                'text_prefix' => mb_substr($text, 0, 80),
+                'reply_len' => mb_strlen($dopReply),
+            ]);
+
+            return response()->json(['ok' => true, 'doppelganger' => true]);
+        }
+
         // ── Normal Run pipeline ──
         $run = $this->runFactoryService->createRun($user, $text, [
             'channel' => 'feishu',

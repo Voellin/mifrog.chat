@@ -1,9 +1,26 @@
 {
-    "name": "laravel/laravel",
+    "name": "voellin/mifrog",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "Mifrog · 米蛙 — 飞书智能助手 / Feishu / Lark intelligent assistant",
+    "keywords": [
+        "mifrog",
+        "feishu",
+        "lark",
+        "bot",
+        "laravel",
+        "llm"
+    ],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Voellin",
+            "email": "voellin@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/Voellin/mifrog.chat/issues",
+        "source": "https://github.com/Voellin/mifrog.chat"
+    },
     "require": {
         "php": "^8.2",
         "guzzlehttp/guzzle": "^7.2",
@@ -63,5 +80,6 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "homepage": "https://mifrog.chat"
 }

@@ -90,3 +90,26 @@ Route::middleware('installed')->group(function (): void {
         Route::post('/admin/logout', [AdminAuthController::class, 'logout']);
     });
 });
+
+// ===== 数字分身 (Doppelgänger) 路由 =====
+Route::middleware(['installed', 'admin.session'])->prefix('admin/doppelgangers')->name('admin.doppelgangers.')->group(function () {
+    // 管理（admin 操作）
+    Route::get('/', [\App\Modules\Doppelganger\Http\Controllers\AdminDoppelgangerController::class, 'index'])->name('index');
+    Route::get('/create', [\App\Modules\Doppelganger\Http\Controllers\AdminDoppelgangerController::class, 'create'])->name('create');
+    Route::post('/', [\App\Modules\Doppelganger\Http\Controllers\AdminDoppelgangerController::class, 'store'])->name('store');
+    Route::get('/{id}', [\App\Modules\Doppelganger\Http\Controllers\AdminDoppelgangerController::class, 'show'])->whereNumber('id')->name('show');
+    Route::post('/{id}/activate', [\App\Modules\Doppelganger\Http\Controllers\AdminDoppelgangerController::class, 'activate'])->whereNumber('id')->name('activate');
+    Route::post('/{id}/pause', [\App\Modules\Doppelganger\Http\Controllers\AdminDoppelgangerController::class, 'pause'])->whereNumber('id')->name('pause');
+    Route::post('/{id}/resume', [\App\Modules\Doppelganger\Http\Controllers\AdminDoppelgangerController::class, 'resume'])->whereNumber('id')->name('resume');
+    Route::post('/{id}/revoke', [\App\Modules\Doppelganger\Http\Controllers\AdminDoppelgangerController::class, 'revoke'])->whereNumber('id')->name('revoke');
+    Route::post('/{id}/extend', [\App\Modules\Doppelganger\Http\Controllers\AdminDoppelgangerController::class, 'extend'])->whereNumber('id')->name('extend');
+    Route::post('/{id}/grant', [\App\Modules\Doppelganger\Http\Controllers\AdminDoppelgangerController::class, 'grant'])->whereNumber('id')->name('grant');
+    Route::post('/{id}/grant/{grantId}/revoke', [\App\Modules\Doppelganger\Http\Controllers\AdminDoppelgangerController::class, 'revokeGrant'])->whereNumber(['id', 'grantId'])->name('grant.revoke');
+
+    // 接班人使用入口（统一对话页）
+    Route::get('/my', [\App\Modules\Doppelganger\Http\Controllers\DoppelgangerInvocationController::class, 'myGrants'])->name('my');
+    Route::get('/{id}/chat', [\App\Modules\Doppelganger\Http\Controllers\DoppelgangerInvocationController::class, 'chat'])->whereNumber('id')->name('chat');
+    Route::post('/{id}/ask', [\App\Modules\Doppelganger\Http\Controllers\DoppelgangerInvocationController::class, 'ask'])->whereNumber('id')->name('ask');
+    Route::post('/{id}/draft', [\App\Modules\Doppelganger\Http\Controllers\DoppelgangerInvocationController::class, 'draft'])->whereNumber('id')->name('draft');
+    Route::post('/{id}/workflow/{workflowId}/preview', [\App\Modules\Doppelganger\Http\Controllers\DoppelgangerInvocationController::class, 'workflowPreview'])->whereNumber(['id', 'workflowId'])->name('workflow.preview');
+});

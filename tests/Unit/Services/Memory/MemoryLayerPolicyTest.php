@@ -76,7 +76,7 @@ class MemoryLayerPolicyTest extends TestCase
     {
         $policy = new MemoryLayerPolicy(new MemoryTextSanitizer());
 
-        $decision = $policy->classifyAssistantAnswer('麻烦你补充一下标题、时间和链接，我才能继续处理。', ['用户A']);
+        $decision = $policy->classifyAssistantAnswer('麻烦你补充一下标题、时间和链接，我才能继续处理。', ['东方']);
 
         $this->assertFalse($decision['store_l2']);
         $this->assertFalse($decision['promote_l3']);
